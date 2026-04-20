@@ -1,14 +1,19 @@
 import json
+import os
+
 import redis
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class RedisBroker:
-    def __init__(self, host="localhost", port=6379, password=None, decode_responses=True):
+    def __init__(self):
         self.client = redis.Redis(
-            host=host,
-            port=port,
-            password=password,
-            decode_responses=decode_responses
+            host=os.getenv("REDIS_HOST"),
+            port=int(os.getenv("REDIS_PORT")),
+            password=os.getenv("REDIS_PASSWORD"),
+            decode_responses=True
         )
 
     def publish(self, topic: str, event: dict):
