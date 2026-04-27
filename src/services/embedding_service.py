@@ -1,6 +1,10 @@
 import json
 
 from src.broker.redis_client import RedisBroker
+from src.db.vector_index import VectorIndex
+
+
+vector_index = VectorIndex(dimension=4)
 
 
 def run_embedding_service():
@@ -24,9 +28,14 @@ def run_embedding_service():
                 "status": "created"
             }
 
+            vector_index.add_embedding(
+                embedding["image_id"],
+                embedding["embedding"]
+            )
+
             broker.publish(output_topic, embedding)
 
-            print("Created embedding:")
+            print("Created embedding and added to FAISS:")
             print(embedding)
             print(f"Published to: {output_topic}")
 
