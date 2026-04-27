@@ -1,10 +1,12 @@
 import json
 
 from src.broker.redis_client import RedisBroker
+from src.db.mongo_client import MongoDBClient
 
 
 def run_annotation_service():
     broker = RedisBroker()
+    mongo = MongoDBClient()
     pubsub = broker.create_pubsub()
 
     input_topic = "inference.completed"
@@ -24,9 +26,11 @@ def run_annotation_service():
                 "status": "stored"
             }
 
-            broker.publish(output_topic, annotation)
+            mongo.store_annotation(annotation.copy())
 
-            print("Stored annotation:")
+            broker.publish(output_topic, annotation)    
+
+            print("Stored annotation in MongoDB:")
             print(annotation)
             print(f"Published to: {output_topic}")
 
