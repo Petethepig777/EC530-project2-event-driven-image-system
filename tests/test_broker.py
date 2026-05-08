@@ -23,4 +23,3 @@ def test_publish_calls_redis_publish(mock_redis):
     broker.publish("image.submitted", event)
 
     mock_client.publish.assert_called_once()
-    
