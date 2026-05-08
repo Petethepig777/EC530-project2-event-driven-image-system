@@ -11,3 +11,4 @@ def test_add_and_search_embedding():
 
     assert len(results) == 1
     assert results[0]["image_id"] == "img_001"
+    

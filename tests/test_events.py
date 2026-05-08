@@ -1,4 +1,5 @@
 from src.models.event_schema import Event
+from src.utils.event_generator import generate_image_submitted_event
 
 
 def test_valid_event_creation():
@@ -14,8 +15,6 @@ def test_valid_event_creation():
     assert "path" in event.payload
     assert event.payload["image_id"] == "img_001"
     assert isinstance(event.timestamp, str)
-
-from src.utils.event_generator import generate_image_submitted_event
 
 
 def test_generate_image_submitted_event():

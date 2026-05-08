@@ -3,3 +3,4 @@ pytest
 python-dotenv
 pymongo
 faiss-cpu
+flake8

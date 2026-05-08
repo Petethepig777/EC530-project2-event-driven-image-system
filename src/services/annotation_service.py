@@ -28,7 +28,7 @@ def run_annotation_service():
 
             mongo.store_annotation(annotation.copy())
 
-            broker.publish(output_topic, annotation)    
+            broker.publish(output_topic, annotation)
 
             print("Stored annotation in MongoDB:")
             print(annotation)

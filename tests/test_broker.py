@@ -19,3 +19,4 @@ def test_publish_calls_redis_publish():
     broker.publish("image.submitted", event)
 
     broker.client.publish.assert_called_once()
+    

@@ -24,3 +24,4 @@ class RedisBroker:
 
     def subscribe(self, pubsub, topic: str):
         pubsub.subscribe(topic)
+        

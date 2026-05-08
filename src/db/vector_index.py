@@ -30,3 +30,4 @@ class VectorIndex:
             })
 
         return results
+        

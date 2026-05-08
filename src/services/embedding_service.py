@@ -42,3 +42,4 @@ def run_embedding_service():
 
 if __name__ == "__main__":
     run_embedding_service()
+    

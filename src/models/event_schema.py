@@ -18,3 +18,4 @@ class Event:
             timestamp=datetime.utcnow().isoformat(),
             payload=payload
         )
+        

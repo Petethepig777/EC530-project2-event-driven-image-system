@@ -14,3 +14,4 @@ def test_malformed_event_missing_payload():
     }
 
     assert "payload" not in malformed_event
+    

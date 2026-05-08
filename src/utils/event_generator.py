@@ -12,3 +12,4 @@ def generate_image_submitted_event(image_id: str, path: str, source: str):
             "source": source
         }
     )
+    

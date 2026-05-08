@@ -17,3 +17,4 @@ class MongoDBClient:
 
     def get_annotation_by_image_id(self, image_id: str):
         return self.annotations.find_one({"image_id": image_id})
+        
