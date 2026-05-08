@@ -1,10 +1,14 @@
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
+
 from src.broker.redis_client import RedisBroker
 
 
-def test_publish_calls_redis_publish():
+@patch("src.broker.redis_client.redis.Redis")
+def test_publish_calls_redis_publish(mock_redis):
+    mock_client = Mock()
+    mock_redis.return_value = mock_client
+
     broker = RedisBroker()
-    broker.client = Mock()
 
     event = {
         "topic": "image.submitted",
@@ -18,5 +22,5 @@ def test_publish_calls_redis_publish():
 
     broker.publish("image.submitted", event)
 
-    broker.client.publish.assert_called_once()
+    mock_client.publish.assert_called_once()
     
