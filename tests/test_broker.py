@@ -1,8 +1,14 @@
+import os
 from unittest.mock import Mock, patch
 
 from src.broker.redis_client import RedisBroker
 
 
+@patch.dict(os.environ, {
+    "REDIS_HOST": "localhost",
+    "REDIS_PORT": "6379",
+    "REDIS_PASSWORD": "test_password"
+})
 @patch("src.broker.redis_client.redis.Redis")
 def test_publish_calls_redis_publish(mock_redis):
     mock_client = Mock()
